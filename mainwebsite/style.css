@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap");
+*,
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow: hidden;
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: -1%;
+  width: 100px;
+  height: 80px;
+}
+.navbar {
+  position: relative;
+  height: 60px;
+  background: #ccc;
+  box-shadow: 3px 3px 4px #000;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 0 10%;
+}
+.container_wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.container_item {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  position: relative;
+}
+.container_item:hover {
+  color: yellow;
+}
+.container_item a {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+.dropdown_list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.dropdown_list li {
+  width: 100%;
+  padding: 5px 0;
+  position: relative;
+}
+#game_function:hover .game {
+  display: block;
+}
+#school_function:hover .school {
+  display: block;
+}
+#name_school:hover .drop_school {
+  display: block;
+}
+#name_student:hover .drop_student {
+  display: block;
+}
+.droplist_2 {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 100%;
+  width: 80px;
+  height: 80px;
+  background-color: white;
+}
+img {
+  width: 250px;
+  height: 250px;
+}
+.body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url(nen.jpg);
+}
+h1 {
+  text-align: center;
+  margin: 0 0 70px 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+#img1 {
+  margin-right: 200px;
+}
+
+.game {
+  /* margin: 20px; */
+  width: 330px;
+  height: 330px;
+  background-color: black;
+  position: relative;
+  border-width: 10px;
+  border-style: outset;
+  color: antiquewhite;
+}
+
+.game:hover{
+  transition: 1s;
+  color: transparent;
+}
+
+.game-img{
+  position: unset;
+  width: 100%;
+  height: 70%;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#gameXO{
+  background-image: url(logoXO.png);
+}
+
+#gameXO:hover{
+  animation-name: aniXO;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+  animation-direction: alternate ;
+}
+
+#gameOAQ{
+  background-image: url(logoOAQ.png);
+  animation-name: none;
+}
+
+#gameOAQ:hover{
+  animation-name: aniOAQ;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+  animation-direction: alternate ;
+}
+
+.game-img:hover{
+  transition: 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+}
+
+.game_list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.game-txt{
+  font-size: x-large;
+}
+
+#logo {
+  height: 60px;
+  width: 150px;
+}
+
+#main {
+  margin-top: 50px;
+  font-size: 80px;
+}
+
+@keyframes aniXO{
+  0%{background-image: url(aniXO/1.png);}
+  10%{background-image: url(aniXO/2.png);}
+  20%{background-image: url(aniXO/3.png);}
+  30%{background-image: url(aniXO/4.png);}
+  40%{background-image: url(aniXO/5.png);}
+  50%{background-image: url(aniXO/6.png);}
+  60%{background-image: url(aniXO/7.png);}
+  70%{background-image: url(aniXO/8.png);}
+  80%{background-image: url(aniXO/9.png);}
+  90%{background-image: url(aniXO/10.png);}
+  100%{background-image: url(aniXO/11.png);}
+}
+
+@keyframes aniOAQ{
+  0%{background-image: url(aniOAQ/1.png);}
+  10%{background-image: url(aniOAQ/2.png);}
+  20%{background-image: url(aniOAQ/3.png);}
+  30%{background-image: url(aniOAQ/4.png);}
+  40%{background-image: url(aniOAQ/5.png);}
+  50%{background-image: url(aniOAQ/6.png);}
+  60%{background-image: url(aniOAQ/7.png);}
+  70%{background-image: url(aniOAQ/8.png);}
+  80%{background-image: url(aniOAQ/9.png);}
+  90%{background-image: url(aniOAQ/10.png);}
+  100%{background-image: url(aniOAQ/11.png);}
+}

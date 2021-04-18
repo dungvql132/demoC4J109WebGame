@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O An Quan</title>
+    <link rel="stylesheet" href="style_button.css">
+    <link rel="stylesheet" href="style_gameground.css">
+    <link rel="stylesheet" href="style_menu.css">
+    <link rel="stylesheet" href="styleOAQ.css">
+</head>
+<body>
+    <div id="back_ground" class="back-ground end">
+        <!-- menu -->
+        <div id="menu" class="container-column container">
+            <button class="btn menu-btn" value="ok" onclick="menuStartBtn()"><img src="img_OAQ/menu/choimoi.png" alt=""></button>
+            <button class="btn menu-btn" value="ok" onclick="menuLoadBtn()"><img src="img_OAQ/menu/choitiep.png" alt=""></button>
+            <button class="btn menu-btn" onclick="menuInsBtn()"><img src="img_OAQ/menu/huongdan.png" alt=""></button>
+            <a href="/index.html" class="btn menu-btn"><img src="img_OAQ/menu/thoat.png" alt=""></a>
+        </div>
+        <!-- chon kieu choi -->
+        <div id="menu_selectedtype" class="container-column ground-disappear">
+            <button id="menu_selected_pve_btn" class="btn menu-btn" value="ok" onclick="menuSelectedTypeBtn(this)"><img src="img_OAQ/type/motnguoi.png" alt=""></button>
+            <button id="menu_selected_pvp_btn" class="btn menu-btn" value="ok" onclick="menuSelectedTypeBtn(this)"><img src="img_OAQ/type/hainguoi.png" alt=""></button>
+            <button value="ok" onclick="menuSelectedTypeBack()" class="btn menu-btn"><img src="img_OAQ/quaylai.png" alt=""></button>
+        </div>
+        <!-- chon che do choi (de, thuong, kho) -->
+        <div id="selectedtype_level" class="container-column ground-disappear">
+            <button id="pve_easy_btn" class="btn menu-btn " value="ok" onclick="selectLevelBtn(this)"><img src="img_OAQ/level/de.png" alt=""></button>
+            <button id="pve_nomal_btn" class="btn menu-btn" value="ok" onclick="selectLevelBtn(this)"><img src="img_OAQ/level/thuong.png" alt=""></button>
+            <button id="pve_hard_btn" class="btn menu-btn" value="ok" onclick="selectLevelBtn(this)"><img src="img_OAQ/level/kho.png" alt=""></button>
+            <button value="ok" onclick="selectLevelBack()" class="btn menu-btn"><img src="img_OAQ/quaylai.png" alt=""></button>
+        </div>
+        <!-- chon o nho (loading) -->
+        <div id="menu_loading" class="container-column ground-disappear">
+            <div class="container-row container">
+                <button id="load_1_btn" class="menu-btn loadBtn" value="ok" onclick="loadingBtn(this)">
+                    <img src="img_OAQ/loadbegin.png" alt="" class="load-img">
+                    <p id="load_1_btn-data"></p>
+                </button>
+                <div id="load_1_btn-delete" class="delete" onclick="deleteLoad(this)"></div>
+            </div>
+            <div class="container-row container">
+                <button id="load_2_btn" class="menu-btn loadBtn" value="ok" onclick="loadingBtn(this)">
+                    <img src="img_OAQ/loadbegin.png" alt="" class="load-img">
+                    <p id="load_2_btn-data"></p>
+                </button>
+                <div id="load_2_btn-delete" class="delete" onclick="deleteLoad(this)"></div>
+            </div>
+            <div class="container-row container">
+                <button id="load_3_btn" class="menu-btn loadBtn" value="ok" onclick="loadingBtn(this)">
+                    <img src="img_OAQ/loadbegin.png" alt="" class="load-img">
+                    <p id="load_3_btn-data"></p>
+                </button>
+                <div id="load_3_btn-delete" class="delete" onclick="deleteLoad(this)"></div>
+            </div>
+            <button value="ok" onclick="selectLoadingBack()" class="btn menu-btn" id="loadId"><img src="img_OAQ/quaylai.png" alt=""></button>
+        </div>
+        <!-- huong dan cach choi -->
+        <div id="instruction" class="ground-disappear container-column">
+            <div id="rule1" class="rule container-column ground-disappear">
+                <div class="infor container container-row">
+                    <h2 class="inforTxt ">khi đến lượt, chọn một ô có đá và rải theo 1 trong 2 hướng</h2>
+                    <img src="img_OAQ/dichuyen.png" alt="" class="inforImg">
+                </div>
+                <div class="infor container container-row">
+                    <h2 class="inforTxt">Bị chững lại(kết thúc lượt ngay lập tức) khi bạn gặp ô quan(không được phép chia ô quan)</h2>
+                    <img src="img_OAQ/chung.png" alt="" class="inforImg">
+                </div>
+            </div>
+            <div id="rule2" class="rule container-column ground-disappear">
+                <div class="infor container container-row">
+                    <h2 class="inforTxt ">Cách ăn đá sau khi rải: cứ cách 1 ô trống ta sẽ được ăn ô kế tiếp</h2>
+                    <img src="img_OAQ/cachan.png" alt="" class="inforImg">
+                </div>
+                <div class="infor container-row container">
+                    <h2 class="inforTxt">Khi đến lượt bạn mà bạn không có dân, bạn bị mất 5 dân</h2>
+                    <img src="img_OAQ/matdan.png" alt="" class="inforImg">
+                </div>
+            </div>
+            <div id="rule3" class="rule container-column ground-disappear">
+                <div class="infor container container-row">
+                    <h2 class="inforTxt ">Trò chơi kết thúc khi cả hai ô quan bị ăn hết. Dân ở hai bên sẽ được thu về mỗi người</h2>
+                    <img src="img_OAQ/ketthuc.png" alt="" class="inforImg">
+                </div>
+            </div>
+            <div id="instructionDiv">
+                <button id="previous" class="instructionBtn" onclick="nextInfor(this)"> <img src="img_OAQ/muiTen/tenTai.png" alt=""></button>
+                <button id="next" class="instructionBtn" onclick="nextInfor(this)"> <img src="img_OAQ/muiTen/tenhai.png" alt=""></button>
+            </div>
+            <button value="ok" onclick="instructionBack()" class="btn menu-btn"><img src="img_OAQ/quaylai.png" alt=""></button>
+        </div>
+        <!-- san choi game -->
+        <div id="playground" class="container-column ground-disappear">
+
+            <div id="playground_top" class="container-row container">
+                <button value="ok" onclick="playgroundMenuBack()" class="btn menu-btn playgroundBtnBack"><img src="img_OAQ/quaylai.png" alt=""></button>
+                <div id="player1">
+                    <div class="avata"><img id="player1_avata" src="img_OAQ/avatar/avata_1.png" alt=""></div>
+                    <div id="player1_score" class="score">0</div>
+                </div>
+            </div>
+
+            <div id="playground_middle" class="container-row container">
+                <div class="peopleDiv"><button id="btn_11" class="boss bossleft" disabled='disabled'>5</button></div>
+                <div id="people" class="container-column container">
+                    <div>
+                        <div id="d1" class="peopleDiv">
+                            <button id="btn_0" value="ok" onclick="peopleClick(this)">5</button>
+                            <!-- <div id="but-img"></div> -->
+                        </div>
+                        <div id="d2" class="peopleDiv"><button id="btn_1" value="ok" onclick="peopleClick(this)">5</button></div>
+                        <div id="d3" class="peopleDiv"><button id="btn_2" value="ok" onclick="peopleClick(this)">5</button></div>
+                        <div id="d4" class="peopleDiv"><button id="btn_3" value="ok" onclick="peopleClick(this)">5</button></div>
+                        <div id="d5" class="peopleDiv"><button id="btn_4" value="ok" onclick="peopleClick(this)">5</button></div>
+                    </div>
+                    <div> 
+                        <div id="d10" class="peopleDiv"><button id="btn_10" value="ok" onclick="peopleClick(this)">5</button></div>
+                        <div id="d9" class="peopleDiv"><button id="btn_9" value="ok" onclick="peopleClick(this)">5</button></div>
+                        <div id="d8" class="peopleDiv"><button id="btn_8" value="ok" onclick="peopleClick(this)">5</button></div>
+                        <div id="d7" class="peopleDiv"><button id="btn_7" value="ok" onclick="peopleClick(this)">5</button></div>
+                        <div id="d6" class="peopleDiv"><button id="btn_6" value="ok" onclick="peopleClick(this)">5</button></div>
+                    </div>
+                </div>
+                <div class="peopleDiv"><button id="btn_5" class="boss bossright" disabled='disabled'>5</button></div>
+            </div>
+            <div id="playground-bot" class="container-row container playground-child">
+                <div id="player2_score" class="score">0</div>
+                <img id="player2_avata" src="img_OAQ/body.png" alt="" class="avata">  
+            </div>
+            <button id="saveBtn" value="ok" onclick="saveGameBtn()" class="btn menu-btn"></button>
+        </div>
+        <div id="ending" class="ground-disappear container-column">
+            <div id="endingScore" class="container container-row">
+                <div id="player1End" class="playerEnding">
+                    PLAYER 1 SCORE
+                    <br><br>
+                    100
+                </div>
+                <div id="player2End" class="playerEnding">
+                    PLAYER 2 SCORE
+                    <br><br>
+                    100
+                </div>
+            </div>
+            <div id="whoWin">
+                PLAYER 1 WIN 
+            </div>
+            <button value="ok" onclick="endingBtn()" class="btn menu-btn" id="endingBtn"><img src="img_OAQ/quaylai.png" alt=""></button>
+        </div>
+    </div>
+
+    <script src="playGround.js"></script>
+    <script src="action.js"></script>
+    <script src="ButtonClick.js"></script>
+</body>
+</html>
