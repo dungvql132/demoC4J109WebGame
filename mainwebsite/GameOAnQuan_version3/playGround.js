@@ -1,13 +1,13 @@
 let x = 0;
-function wait(ms){
+function wait(ms) {
     return new Promise(resolve => {
-        setTimeout(()=>{
+        setTimeout(() => {
             resolve('resolved');
-        },ms);
+        }, ms);
     });
 }
 
-function addBut(id){
+function addBut(id) {
     // console.log('them anh');
     let btn = document.getElementById(id)
     let but = document.createElement("div")
@@ -17,7 +17,7 @@ function addBut(id){
     btn.parentElement.appendChild(but)
 }
 
-function removeBut(id){
+function removeBut(id) {
     // console.log('huy anh');
     let btn = document.getElementById(id)
     let but = document.getElementById('but-img')
@@ -40,7 +40,7 @@ class PlayGround {
     }
     //-------------------------------------------- Ham Bo Tro (khong lien quan den luot choi) ----------------------------------------
     // hàm cài đặt ảnh theo giá trị đá VV
-    getArr(){
+    getArr() {
         return this.arrStoneStore.slice(0)
     }
 
@@ -66,12 +66,12 @@ class PlayGround {
         this.arrStoneStore[place] = '0'
         if (this.active) {
             addBut(this.stoneStore[place].id)
-            await wait(600); 
+            await wait(600);
             removeBut(this.stoneStore[place].id)
             this.stoneStore[place].innerHTML = '0'
             this.setStoneImg(place)
-    // ---------------------------------------------------------------------------------------------------------------------------
-            
+            // ---------------------------------------------------------------------------------------------------------------------------
+
         }
         return takedStone;
     }
@@ -81,12 +81,12 @@ class PlayGround {
         // console.log('tang da');
         if (this.active) {
             addBut(this.stoneStore[place].id)
-            await wait(800); 
+            await wait(800);
             removeBut(this.stoneStore[place].id)
 
             this.stoneStore[place].innerHTML = Number(this.stoneStore[place].innerHTML) + 1
             this.setStoneImg(place)
-            
+
             // ---------------------------------------------------------------------------------------------------------------------
         }
         this.arrStoneStore[place] = Number(this.arrStoneStore[place]) + 1
@@ -146,7 +146,7 @@ class PlayGround {
     async spreadTheStone(place, direction) {
         let ok;
         let takedStone;
-        for (; ;) {
+        for (let j = 0; j <= 1000; j++) {
             // console.log(x++);
             takedStone = await this.takeTheStone(place, 0)
             // console.log('da nhat:'+ takedStone)
@@ -164,6 +164,7 @@ class PlayGround {
                 return 0
             }
         }
+        return 0;
     }
 
     // ham cai dat so da va anh ve 1
@@ -185,7 +186,7 @@ class PlayGround {
             turn = 2
             for (let i = 6; i < 11; i++) { this.addscore(turn, this.arrStoneStore[i]) }
             return true
-        }return false
+        } return false
     }
 
     // khi vao van moi (new Game)
@@ -245,10 +246,10 @@ class PlayGround {
     setTurnButton(turn) {
         if (turn == 0) {
             for (let i = 0; i < 12; i++) {
-                this.stoneStore[i].disabled = true; 
+                this.stoneStore[i].disabled = true;
                 this.stoneStore[i].classList.add('black')
                 this.stoneStore[i].classList.remove('peopleHover')
-                }
+            }
         } else if (turn == 2) {
             for (let i = 0; i < 5; i++) {
                 this.stoneStore[i].disabled = true;
@@ -321,12 +322,12 @@ class AI {
         let max = 0;
         let place;
         let direction;
-        for(let i =0; i < result.length ; i++){
-            if(result[i] >= max){
-                place = Math.floor(i/2)
-                if(i%2 == 0){
+        for (let i = 0; i < result.length; i++) {
+            if (result[i] >= max) {
+                place = Math.floor(i / 2)
+                if (i % 2 == 0) {
                     direction = 'follow'
-                }else{
+                } else {
                     direction = 'reverse'
                 }
             }
